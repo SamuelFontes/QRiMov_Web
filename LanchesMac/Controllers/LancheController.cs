@@ -38,14 +38,14 @@ namespace LanchesMac.Controllers
             if (string.IsNullOrEmpty(categoria))
             {
                 lanches = _lancheRepository.Lanches.OrderBy(p => p.LancheId);
-                categoriaAtual = "Todos os lanches";
+                categoriaAtual = "Todos os Imoveis";
             }
             else
             {
-                if (string.Equals("Normal", _categoria, StringComparison.OrdinalIgnoreCase))
-                    lanches = _lancheRepository.Lanches.Where(p => p.Categoria.CategoriaNome.Equals("Normal")).OrderBy(p => p.Nome);
+                if (string.Equals("Venda", _categoria, StringComparison.OrdinalIgnoreCase))
+                    lanches = _lancheRepository.Lanches.Where(p => p.Categoria.CategoriaNome.Equals("Venda")).OrderBy(p => p.Nome);
                 else
-                    lanches = _lancheRepository.Lanches.Where(p => p.Categoria.CategoriaNome.Equals("Natural")).OrderBy(p => p.Nome);
+                    lanches = _lancheRepository.Lanches.Where(p => p.Categoria.CategoriaNome.Equals("Aluguel")).OrderBy(p => p.Nome);
 
                 categoriaAtual = _categoria;
             }

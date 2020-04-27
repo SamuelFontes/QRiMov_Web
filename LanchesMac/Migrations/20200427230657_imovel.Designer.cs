@@ -11,9 +11,10 @@ using System;
 namespace LanchesMac.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200427230657_imovel")]
+    partial class imovel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,44 +56,6 @@ namespace LanchesMac.Migrations
                     b.HasKey("CategoriaId");
 
                     b.ToTable("Categorias");
-                });
-
-            modelBuilder.Entity("LanchesMac.Models.Imovel", b =>
-                {
-                    b.Property<int>("ImovelId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("CategoriaId");
-
-                    b.Property<string>("DescricaoCurta")
-                        .IsRequired()
-                        .HasMaxLength(200);
-
-                    b.Property<string>("DescricaoDetalhada")
-                        .IsRequired()
-                        .HasMaxLength(200);
-
-                    b.Property<bool>("EmEstoque");
-
-                    b.Property<string>("ImagemThumbnailUrl")
-                        .HasMaxLength(200);
-
-                    b.Property<string>("ImagemUrl")
-                        .HasMaxLength(200);
-
-                    b.Property<bool>("IsLanchePreferido");
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasMaxLength(80);
-
-                    b.Property<decimal>("Preco");
-
-                    b.HasKey("ImovelId");
-
-                    b.HasIndex("CategoriaId");
-
-                    b.ToTable("Imoveis");
                 });
 
             modelBuilder.Entity("LanchesMac.Models.Lanche", b =>
@@ -368,14 +331,6 @@ namespace LanchesMac.Migrations
                     b.HasOne("LanchesMac.Models.Lanche", "Lanche")
                         .WithMany()
                         .HasForeignKey("LancheId");
-                });
-
-            modelBuilder.Entity("LanchesMac.Models.Imovel", b =>
-                {
-                    b.HasOne("LanchesMac.Models.Categoria", "Categoria")
-                        .WithMany()
-                        .HasForeignKey("CategoriaId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("LanchesMac.Models.Lanche", b =>

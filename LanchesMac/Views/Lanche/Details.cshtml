@@ -15,7 +15,7 @@
                 <!--Text-->
                 <p class="card-text"><h3>@Model.DescricaoDetalhada</h3></p>
                 <p class="btn btn-group pull-right">
-                    <a asp-controller="Lanche" asp-action="List" class="btn btn-default">Ver todos os lanches</a>
+                    <a asp-controller="Lanche" asp-action="List" class="btn btn-default">Ver todos os imoveis</a>
                     <a class="btn btn-primary" id="cartButton" asp-controller="CarrinhoCompra" asp-action="AdicionarItemNoCarrinhoCompra" asp-route-lancheId="@Model.LancheId">
                         Adicionar @Model.Nome ao carrinho
                     </a>
