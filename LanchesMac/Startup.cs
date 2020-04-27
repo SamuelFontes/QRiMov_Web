@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace LanchesMac
 {
@@ -16,6 +17,7 @@ namespace LanchesMac
     {
         public Startup(IConfiguration configuration)
         {
+            // INICIO DO SITE
             Configuration = configuration;
         }
 
