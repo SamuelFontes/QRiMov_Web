@@ -11,12 +11,15 @@ namespace QRiMov.Models
     public class Usuario
     {
         [Key]
-        public int INT_ID_USR { get; set; }
+        public int Id { get; set; }
         [Required]
-        public string STR_NOME_USR { get; set; }
+        public string Nome { get; set; }
         [Required]
-        public string STR_LOGIN_USR { get; set; }
-        [Required]
-        public string STR_SENHA_USR { get; set; }
+        public string Email { get; set; }
+        [Required(ErrorMessage = "Informe o nome do usuário", AllowEmptyStrings = false)]
+        public string User { get; set; }
+        [Required(ErrorMessage = "Informe a senha do usuário", AllowEmptyStrings = false)]
+        [DataType(System.ComponentModel.DataAnnotations.DataType.Password)]
+        public string Senha { get; set; }
     }
 }

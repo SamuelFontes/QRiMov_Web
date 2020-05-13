@@ -10,10 +10,13 @@ namespace QRiMov.Models
 {
     interface IUsuarioDAL
     {
-        IEnumerable<Usuario> GetAllUsuarios();
-        void AddUsuario(Usuario usuario);
-        void UpdateUsuario(Usuario usuario);
-        Usuario GetUsuario(int? id);
-        void DeleteUsuario(int? id);  
+
+        bool verificaLogin(string login, string senha);
+        string verificaPrermissoes(string login, string senha);
+        bool salvarUsuarioProc(Usuario usr);
+        //bool AlterasuarioProc(Usuario usr);
+        bool AlteraSenha(Usuario usr, string id);
+        bool DeletausuarioProc(Usuario usr);
+        List<string> DadosUsuarios(string id);
     }
 }
