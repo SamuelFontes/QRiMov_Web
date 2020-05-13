@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace QRiMov.Models
 {
-    interface IImovelDAL
+    public interface IImovelDAL
     {
         IEnumerable<Imovel> GetAllImoveis();
         void AddImovel(Imovel imovel);
