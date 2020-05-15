@@ -12,11 +12,10 @@ namespace QRiMov.Models
     {
         public void AddImovel(Imovel imovel)
         {
-            string comandoSQL = "INSEREIMOVEL @Id,@Descricao,@Bairro,@CEP,@Comarca,@Complemento,@Logradouro,@Numero,@UF,@Valor";
+            string comandoSQL = "INSEREIMOVEL @Descricao,@Bairro,@CEP,@Comarca,@Complemento,@Logradouro,@Numero,@UF,@Valor,NULL,NULL";
             SqlConnection conn = Conexao.abrirConexao();
             SqlCommand cmd = new SqlCommand(comandoSQL, conn);
             cmd.CommandType = CommandType.Text;
-            cmd.Parameters.AddWithValue("@Id", imovel.Id);
             cmd.Parameters.AddWithValue("@Descricao", imovel.Descricao);
             cmd.Parameters.AddWithValue("@Bairro", imovel.Bairro);
             cmd.Parameters.AddWithValue("@CEP", imovel.CEP);
@@ -91,7 +90,7 @@ namespace QRiMov.Models
 
         public void UpdateImovel(Imovel imovel)
         {
-            string comandoSQL = "ALTERAIMOVEL @Id,@Descricao,@Bairro,@CEP,@Comarca,@Complemento,@Logradouro,@Numero,@UF,@Valor";
+            string comandoSQL = "ALTERAIMOVEL @Descricao,@Bairro,@CEP,@Comarca,@Complemento,@Logradouro,@Numero,@UF,@Valor,NULL,@Id";
             SqlConnection conn = Conexao.abrirConexao();
             SqlCommand cmd = new SqlCommand(comandoSQL, conn);
             cmd.CommandType = CommandType.Text;
