@@ -27,5 +27,6 @@ namespace QRiMov.Models
         public string UF { get; set; }
         [Required]
         public string Comarca { get; set; }
+        public string Miniatura { get; set; }
     }
 }
