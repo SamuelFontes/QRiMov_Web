@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using QRiMovWeb.Repoositories;
+using QRiMovWeb.ViewModels;
 
 namespace QRiMovWeb.Controllers
 {
@@ -22,8 +23,12 @@ namespace QRiMovWeb.Controllers
         {
             ViewBag.Imovel = "Imovel";
             ViewData["Categoria"] = "Categoria";
-            var imoveis = _imovelRepository.Imoveis;
-            return View(imoveis);
+            //var imoveis = _imovelRepository.Imoveis;
+            //return View(imoveis);
+            var imovelListViewModel = new ImovelListViewModel();
+            imovelListViewModel.Imoveis = _imovelRepository.Imoveis;
+            imovelListViewModel.CategoriaAtual = "Categoria Atual";
+            return View(imovelListViewModel);
         }
     }
 }
