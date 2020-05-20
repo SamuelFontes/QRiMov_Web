@@ -1,0 +1,17 @@
+﻿@using QRiMovWeb.Models
+@model IEnumerable<Imovel>
+
+<div><h2>Todos os Imóveis</h2></div>
+@foreach(var imovel in Model)
+{
+<div class="col-sm-4 col-lg-4 col-md-4">
+    <div class="thumbnail">
+        <img src="@imovel.ImgUrl" class="img-rounded" alt="" />
+    </div>
+    <div class="caption">
+        <h3 class="pull-right">Valor : @imovel.Valor.ToString("c")</h3>
+        <h3>Imóvel : @imovel.Descricao</h3>
+        <p>Valor : @imovel.Valor.ToString("c")</p>
+    </div>
+</div>
+}
