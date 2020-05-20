@@ -13,6 +13,7 @@ using QRiMovWeb.Context;
 using QRiMovWeb.Models;
 using QRiMovWeb.Repoositories;
 
+
 namespace QRiMovWeb
 {
     public class Startup
@@ -62,6 +63,8 @@ namespace QRiMovWeb
 
             app.UseMvc(routes =>
             {
+                routes.MapRoute("areaRoute", "{area:exists}/{Controller=Admin}/{Action=Index}/{id?}");
+
                 routes.MapRoute(
                     name:"filtrarPorCategoria",
                     template:"Imovel/{action}/{categoria}",
