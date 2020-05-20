@@ -47,5 +47,34 @@ namespace QRiMovWeb.Controllers
             ModelState.AddModelError("", "Usuário ou Senha Inválidos");
             return View(loginVM);
         }
+        public IActionResult Register()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(LoginViewModel registroVM)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new IdentityUser()
+                {
+                    UserName = registroVM.UserName
+                };
+                var result = await _userManager.CreateAsync(user, registroVM.Password);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            return View(registroVM);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
