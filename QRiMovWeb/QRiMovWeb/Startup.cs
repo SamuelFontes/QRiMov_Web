@@ -58,6 +58,12 @@ namespace QRiMovWeb
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
+                    name:"filtrarPorCategoria",
+                    template:"Imovel/{action}/{categoria}",
+                    defaults: new {Controller="Imovel",action="List"}
+                    );
+
+                routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using QRiMovWeb.Models;
 using QRiMovWeb.Repoositories;
 using QRiMovWeb.ViewModels;
 
@@ -19,16 +20,36 @@ namespace QRiMovWeb.Controllers
             _categoriaRepository = categoriaRepository;
         }
 
-        public IActionResult List()
+        public IActionResult List(string categoria)
         {
-            ViewBag.Imovel = "Imovel";
-            ViewData["Categoria"] = "Categoria";
-            //var imoveis = _imovelRepository.Imoveis;
-            //return View(imoveis);
-            var imovelListViewModel = new ImovelListViewModel();
-            imovelListViewModel.Imoveis = _imovelRepository.Imoveis;
-            imovelListViewModel.CategoriaAtual = "Categoria Atual";
-            return View(imovelListViewModel);
+            string _categoria = categoria;
+            IEnumerable<Imovel> imoveis;
+            string categoriaAtual = string.Empty;
+
+            if (string.IsNullOrEmpty(categoria))
+            {
+                imoveis = _imovelRepository.Imoveis.OrderBy(i => i.Id);
+                categoria = "Todos os Imóveis";
+            }
+            else
+            {
+                if (string.Equals("Venda", _categoria, StringComparison.OrdinalIgnoreCase))
+                {
+                    imoveis = _imovelRepository.Imoveis.Where(i => i.Categoria.CategoriaNome.Equals("Venda")).OrderBy(i => i.Descricao);
+                }
+                else
+                {
+                    imoveis = _imovelRepository.Imoveis.Where(i => i.Categoria.CategoriaNome.Equals("Aluguel")).OrderBy(i => i.Descricao);
+                }
+                categoriaAtual = _categoria;
+            }
+            var imoveisListViewModel = new ImovelListViewModel
+            {
+                Imoveis = imoveis,
+                CategoriaAtual = categoriaAtual
+            };
+            
+            return View(imoveisListViewModel);
         }
     }
 }
