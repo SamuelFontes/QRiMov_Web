@@ -19,7 +19,7 @@ namespace QRiMovWeb.Controllers
             _imovelRepository = imovelRepository;
         }
 
-        public IActionResult Index()
+        public ViewResult Index()
         {
             var homeViewModel = new HomeViewModel
             {
@@ -29,6 +29,9 @@ namespace QRiMovWeb.Controllers
             return View(homeViewModel);
         }
 
-        
+        public ViewResult AcessDenied()
+        {
+            return View();
+        }
     }
 }

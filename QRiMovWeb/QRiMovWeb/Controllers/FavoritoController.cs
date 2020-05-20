@@ -33,6 +33,18 @@ namespace QRiMovWeb.Controllers
             };
             return View(favoritoViewModel);
         }
+        public IActionResult Details()
+        {
+            var itens = _favorito.GetFavoritoItems();
+            _favorito.FavoritoItems = itens;
+
+            var favoritoViewModel = new FavoritoViewModel
+            {
+                Favorito = _favorito,
+                FavoritoTotal = _favorito.GetFavoritoTotal()
+            };
+            return View(favoritoViewModel);
+        }
         [Authorize]
         public RedirectToActionResult AdicionarItemNosFavoritos(int imovelId)
         {

@@ -11,8 +11,8 @@ namespace QRiMovWeb.Controllers
 {
     public class AccountController : Controller
     {
-        public UserManager<IdentityUser> _userManager;
-        public SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
 
         public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signManager)
         {
@@ -21,7 +21,7 @@ namespace QRiMovWeb.Controllers
         }
 
         //implementar login, registro e logout
-        [HttpGet]
+
         public IActionResult Login(string returnUrl)
         {
             return View(new LoginViewModel()
@@ -62,22 +62,26 @@ namespace QRiMovWeb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(LoginViewModel registroVM)
+        public async Task<IActionResult> Register(LoginViewModel loginVM)
         {
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser() { UserName = registroVM.UserName };
-                var result = await _userManager.CreateAsync(user, registroVM.Password);
+                var user = new IdentityUser() { UserName = loginVM.UserName };
+                var result = await _userManager.CreateAsync(user, loginVM.Password);
 
                 if (result.Succeeded)
                 {
-                    
-                    return RedirectToAction("Index", "Home");
+                    // Adiciona o usuário padrão ao perfil Member
+                    await _userManager.AddToRoleAsync(user, "Member");
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+
+                    return RedirectToAction("LoggedIn", "Account");
                 }
             }
-            return View(registroVM);
+            return View(loginVM);
         }
 
+        public ViewResult LoggedIn() => View();
 
         [HttpPost]
         [Authorize]

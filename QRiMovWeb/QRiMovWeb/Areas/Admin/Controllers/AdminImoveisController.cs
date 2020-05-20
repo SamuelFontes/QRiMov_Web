@@ -12,7 +12,7 @@ using QRiMovWeb.Models;
 namespace QRiMovWeb.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class AdminImoveisController : Controller
     {
         private readonly AppDbContext _context;

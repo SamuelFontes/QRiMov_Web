@@ -33,6 +33,7 @@ namespace QRiMovWeb
 
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
+            services.ConfigureApplicationCookie(options => options.AccessDeniedPath = "/Home/AcessDenied");
 
             services.AddTransient<ICategoriaRepository, CategoriaRepository>();
             services.AddTransient<IImovelRepository, ImovelRepository>();
