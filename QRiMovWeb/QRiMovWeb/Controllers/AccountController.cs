@@ -2,22 +2,25 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using QRiMovWeb.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using QRiMovWeb.ViewModels;
 
 namespace QRiMovWeb.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        public UserManager<IdentityUser> _userManager;
+        public SignInManager<IdentityUser> _signInManager;
 
-        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signManager)
         {
             _userManager = userManager;
-            _signInManager = signInManager;
+            _signInManager = signManager;
         }
+
+        //implementar login, registro e logout
         [HttpGet]
         public IActionResult Login(string returnUrl)
         {
@@ -26,12 +29,15 @@ namespace QRiMovWeb.Controllers
                 ReturnUrl = returnUrl
             });
         }
+
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel loginVM)
         {
             if (!ModelState.IsValid)
                 return View(loginVM);
+
             var user = await _userManager.FindByNameAsync(loginVM.UserName);
+
             if (user != null)
             {
                 var result = await _signInManager.PasswordSignInAsync(user, loginVM.Password, false, false);
@@ -41,36 +47,40 @@ namespace QRiMovWeb.Controllers
                     {
                         return RedirectToAction("Index", "Home");
                     }
-                    return RedirectToAction(loginVM.ReturnUrl);
+                    return Redirect(loginVM.ReturnUrl);
                 }
             }
-            ModelState.AddModelError("", "Usuário ou Senha Inválidos");
+
+            ModelState.AddModelError("", "Usuário/Senha inválidos ou não localizados!!");
             return View(loginVM);
         }
+
         public IActionResult Register()
         {
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(LoginViewModel registroVM)
         {
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser()
-                {
-                    UserName = registroVM.UserName
-                };
+                var user = new IdentityUser() { UserName = registroVM.UserName };
                 var result = await _userManager.CreateAsync(user, registroVM.Password);
+
                 if (result.Succeeded)
                 {
+                    
                     return RedirectToAction("Index", "Home");
                 }
             }
             return View(registroVM);
         }
 
+
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();

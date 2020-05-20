@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using LanchesMac.ViewModels;
+using QRiMovWeb.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
-namespace LanchesMac.Controllers
+namespace QRiMovWeb.Controllers
 {
     public class AccountController : Controller
     {

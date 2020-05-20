@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using QRiMovWeb.Models;
 using QRiMovWeb.Repoositories;
@@ -32,6 +33,7 @@ namespace QRiMovWeb.Controllers
             };
             return View(favoritoViewModel);
         }
+        [Authorize]
         public RedirectToActionResult AdicionarItemNosFavoritos(int imovelId)
         {
             var imovelSelecionado = _imovelRepository.Imoveis.FirstOrDefault(p => p.Id == imovelId);
@@ -39,6 +41,7 @@ namespace QRiMovWeb.Controllers
                 _favorito.AdicionarFavorito(imovelSelecionado, 1);
             return RedirectToAction("Index");
         }
+        [Authorize]
         public IActionResult RemoverItemDosFavoritos(int imovelId)
         {
             var imovelSelecionado = _imovelRepository.Imoveis.FirstOrDefault(p => p.Id == imovelId);
