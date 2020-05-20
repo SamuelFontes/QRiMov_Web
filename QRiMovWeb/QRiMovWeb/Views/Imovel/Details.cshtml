@@ -1,0 +1,25 @@
+﻿@model Imovel
+<div class="container marginTop">
+    <div class="row">
+        <div class="card">
+            <div class="text-center view overlay hm-white-slight">
+                <img src="@Model.ImgUrl" class="img-fluid" alt=""/>
+                <a href="#">
+                    <div class="mask waves-effect waves-light"></div>
+                </a>
+            </div>
+            <div class="card-block">
+                <!--Title-->
+                <h2 class="card-title">@Model.Descricao</h2>
+                <!--Text-->
+                <p class="card-text"><h3>@Model.Comarca, @Model.Bairro</h3></p>
+                <p class="btn btn-group pull-right">
+                    <a asp-controller="Imovel" asp-action="List" class="btn btn-default">Ver todos os imóveis</a>
+                    <a class="btn btn-primary" id="cartButton" asp-controller="Favorito" asp-action="AdicionarItemNosFavoritos" asp-route-imovelId="@Model.Id">
+                        Adicionar @Model.Descricao aos Favoritos
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

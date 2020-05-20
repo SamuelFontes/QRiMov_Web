@@ -51,5 +51,14 @@ namespace QRiMovWeb.Controllers
             
             return View(imoveisListViewModel);
         }
+        public IActionResult Details(int imovelId)
+        {
+            var imovel = _imovelRepository.Imoveis.FirstOrDefault(i => i.Id == imovelId);
+            /*if (imovel == null)
+            {
+                return View("../Views/Error/Error.cshtml");
+            }*/
+            return View(imovel);
+        }
     }
 }
