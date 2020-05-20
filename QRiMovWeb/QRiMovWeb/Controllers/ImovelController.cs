@@ -60,5 +60,21 @@ namespace QRiMovWeb.Controllers
             }*/
             return View(imovel);
         }
+        public IActionResult search(string searchString)
+        {
+            string _searchString = searchString;
+            IEnumerable<Imovel> imoveis;
+            string _categoriaAtual = string.Empty;
+
+            if (string.IsNullOrEmpty(_searchString))
+            {
+                imoveis = _imovelRepository.Imoveis.OrderBy(i => i.Id);
+            }
+            else
+            {
+                imoveis = _imovelRepository.Imoveis.Where(i => i.Descricao.ToLower().Contains(_searchString.ToLower()));
+            }
+            return View("~/Views/Imovel/List.cshtml", new ImovelListViewModel { Imoveis = imoveis, CategoriaAtual = "Todos os imóveis" });
+        }
     }
 }
