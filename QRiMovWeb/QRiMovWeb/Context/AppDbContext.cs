@@ -9,5 +9,6 @@ namespace QRiMovWeb.Context
         {}
         public DbSet<Imovel> Imoveis { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
+        public DbSet<FavoritoItem> FavoritoItems { get; set; }
     }
 }
