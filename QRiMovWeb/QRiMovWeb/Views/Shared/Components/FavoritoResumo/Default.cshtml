@@ -1,0 +1,12 @@
+﻿@model FavoritoViewModel
+@if (Model.Favorito.FavoritoItems.Count > 0)
+{
+    <li>
+        <a asp-controller="Favorito">
+            <span class="glyphicon glyphicon-shopping-cart" ></span>
+            <span id="cart-status">
+                @Model.Favorito.FavoritoItems.Count
+            </span>
+        </a>
+    </li>
+}
