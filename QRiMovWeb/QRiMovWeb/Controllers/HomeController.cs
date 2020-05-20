@@ -5,33 +5,30 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using QRiMovWeb.Models;
+using QRiMovWeb.Repoositories;
+using QRiMovWeb.ViewModels;
 
 namespace QRiMovWeb.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IImovelRepository _imovelRepository;
+
+        public HomeController(IImovelRepository imovelRepository)
+        {
+            _imovelRepository = imovelRepository;
+        }
+
         public IActionResult Index()
         {
-            return View();
+            var homeViewModel = new HomeViewModel
+            {
+                ImoveisEmDestaque = _imovelRepository.ImoveisDestaque
+            };
+
+            return View(homeViewModel);
         }
 
-        public IActionResult About()
-        {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        
     }
 }
