@@ -23,7 +23,7 @@ namespace QRiMovWeb.Repoositories
 
         public Imovel GetImovelById(int imovelId)
         {
-           return _context.Imoveis.FirstOrDefault(i => i.Id == imovelId);
+           return _context.Imoveis.FirstOrDefault(i => i.ImovelId == imovelId);
         }
     }
 }

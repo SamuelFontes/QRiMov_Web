@@ -15,7 +15,7 @@
                 <p class="card-text"><h3>@Model.Comarca, @Model.Bairro</h3></p>
                 <p class="btn btn-group pull-right">
                     <a asp-controller="Imovel" asp-action="List" class="btn btn-default">Ver todos os imóveis</a>
-                    <a class="btn btn-primary" id="cartButton" asp-controller="Favorito" asp-action="AdicionarItemNosFavoritos" asp-route-imovelId="@Model.Id">
+                    <a class="btn btn-primary" id="cartButton" asp-controller="Favorito" asp-action="AdicionarItemNosFavoritos" asp-route-imovelId="@Model.ImovelId">
                         Adicionar @Model.Descricao aos Favoritos
                     </a>
                 </p>

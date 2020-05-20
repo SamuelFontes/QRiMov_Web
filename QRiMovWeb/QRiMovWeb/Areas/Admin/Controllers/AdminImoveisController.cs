@@ -39,7 +39,7 @@ namespace QRiMovWeb.Areas.Admin.Controllers
 
             var imovel = await _context.Imoveis
                 .Include(i => i.Categoria)
-                .SingleOrDefaultAsync(m => m.Id == id);
+                .SingleOrDefaultAsync(m => m.ImovelId == id);
             if (imovel == null)
             {
                 return NotFound();
@@ -60,7 +60,7 @@ namespace QRiMovWeb.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Descricao,Valor,CEP,Logradouro,Numero,Complemento,Bairro,UF,Comarca,ImgMiniaturaUrl,ImgUrl,IsAtivo,IsDestaque,CategoriaId")] Imovel imovel)
+        public async Task<IActionResult> Create([Bind("ImovelId,Descricao,Valor,CEP,Logradouro,Numero,Complemento,Bairro,UF,Comarca,ImgMiniaturaUrl,ImgUrl,IsDestaque,CategoriaId")] Imovel imovel)
         {
             if (ModelState.IsValid)
             {
@@ -80,7 +80,7 @@ namespace QRiMovWeb.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var imovel = await _context.Imoveis.SingleOrDefaultAsync(m => m.Id == id);
+            var imovel = await _context.Imoveis.SingleOrDefaultAsync(m => m.ImovelId == id);
             if (imovel == null)
             {
                 return NotFound();
@@ -94,9 +94,9 @@ namespace QRiMovWeb.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Descricao,Valor,CEP,Logradouro,Numero,Complemento,Bairro,UF,Comarca,ImgMiniaturaUrl,ImgUrl,IsAtivo,IsDestaque,CategoriaId")] Imovel imovel)
+        public async Task<IActionResult> Edit(int id, [Bind("ImovelId,Descricao,Valor,CEP,Logradouro,Numero,Complemento,Bairro,UF,Comarca,ImgMiniaturaUrl,ImgUrl,IsDestaque,CategoriaId")] Imovel imovel)
         {
-            if (id != imovel.Id)
+            if (id != imovel.ImovelId)
             {
                 return NotFound();
             }
@@ -110,7 +110,7 @@ namespace QRiMovWeb.Areas.Admin.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ImovelExists(imovel.Id))
+                    if (!ImovelExists(imovel.ImovelId))
                     {
                         return NotFound();
                     }
@@ -135,7 +135,7 @@ namespace QRiMovWeb.Areas.Admin.Controllers
 
             var imovel = await _context.Imoveis
                 .Include(i => i.Categoria)
-                .SingleOrDefaultAsync(m => m.Id == id);
+                .SingleOrDefaultAsync(m => m.ImovelId == id);
             if (imovel == null)
             {
                 return NotFound();
@@ -149,7 +149,7 @@ namespace QRiMovWeb.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var imovel = await _context.Imoveis.SingleOrDefaultAsync(m => m.Id == id);
+            var imovel = await _context.Imoveis.SingleOrDefaultAsync(m => m.ImovelId == id);
             _context.Imoveis.Remove(imovel);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -157,7 +157,7 @@ namespace QRiMovWeb.Areas.Admin.Controllers
 
         private bool ImovelExists(int id)
         {
-            return _context.Imoveis.Any(e => e.Id == id);
+            return _context.Imoveis.Any(e => e.ImovelId == id);
         }
     }
 }

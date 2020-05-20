@@ -45,9 +45,7 @@
                 <th>
                     @Html.DisplayNameFor(model => model.ImgUrl)
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.IsAtivo)
-                </th>
+                
                 <th>
                     @Html.DisplayNameFor(model => model.IsDestaque)
                 </th>
@@ -93,9 +91,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ImgUrl)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsAtivo)
-            </td>
+           
             <td>
                 @Html.DisplayFor(modelItem => item.IsDestaque)
             </td>
@@ -103,9 +99,9 @@
                 @Html.DisplayFor(modelItem => item.Categoria.CategoriaId)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.ImovelId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ImovelId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ImovelId">Delete</a>
             </td>
         </tr>
 }

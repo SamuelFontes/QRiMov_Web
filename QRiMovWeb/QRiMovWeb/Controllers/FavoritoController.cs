@@ -48,7 +48,7 @@ namespace QRiMovWeb.Controllers
         [Authorize]
         public RedirectToActionResult AdicionarItemNosFavoritos(int imovelId)
         {
-            var imovelSelecionado = _imovelRepository.Imoveis.FirstOrDefault(p => p.Id == imovelId);
+            var imovelSelecionado = _imovelRepository.Imoveis.FirstOrDefault(p => p.ImovelId == imovelId);
             if (imovelSelecionado != null)
                 _favorito.AdicionarFavorito(imovelSelecionado, 1);
             return RedirectToAction("Index");
@@ -56,7 +56,7 @@ namespace QRiMovWeb.Controllers
         [Authorize]
         public IActionResult RemoverItemDosFavoritos(int imovelId)
         {
-            var imovelSelecionado = _imovelRepository.Imoveis.FirstOrDefault(p => p.Id == imovelId);
+            var imovelSelecionado = _imovelRepository.Imoveis.FirstOrDefault(p => p.ImovelId == imovelId);
             if (imovelSelecionado != null)
                 _favorito.RemoverFavorito(imovelSelecionado);
             return RedirectToAction("Index");

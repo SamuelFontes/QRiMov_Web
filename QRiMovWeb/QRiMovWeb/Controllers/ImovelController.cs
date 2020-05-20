@@ -28,7 +28,7 @@ namespace QRiMovWeb.Controllers
 
             if (string.IsNullOrEmpty(categoria))
             {
-                imoveis = _imovelRepository.Imoveis.OrderBy(i => i.Id);
+                imoveis = _imovelRepository.Imoveis.OrderBy(i => i.ImovelId);
                 categoria = "Todos os Imóveis";
             }
             else
@@ -53,7 +53,7 @@ namespace QRiMovWeb.Controllers
         }
         public IActionResult Details(int imovelId)
         {
-            var imovel = _imovelRepository.Imoveis.FirstOrDefault(i => i.Id == imovelId);
+            var imovel = _imovelRepository.Imoveis.FirstOrDefault(i => i.ImovelId == imovelId);
             /*if (imovel == null)
             {
                 return View("../Views/Error/Error.cshtml");
@@ -68,7 +68,7 @@ namespace QRiMovWeb.Controllers
 
             if (string.IsNullOrEmpty(_searchString))
             {
-                imoveis = _imovelRepository.Imoveis.OrderBy(i => i.Id);
+                imoveis = _imovelRepository.Imoveis.OrderBy(i => i.ImovelId);
             }
             else
             {

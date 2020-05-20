@@ -35,7 +35,7 @@ namespace QRiMovWeb.Models
         {
             var favoritoItem =
                 _context.FavoritoItems.SingleOrDefault(
-                    s => s.Imovel.Id == imovel.Id && s.FavoritoId == FavoritoId);
+                    s => s.Imovel.ImovelId == imovel.ImovelId && s.FavoritoId == FavoritoId);
             if (favoritoItem == null)
             {
                 favoritoItem = new FavoritoItem
@@ -56,7 +56,7 @@ namespace QRiMovWeb.Models
         {
             var favoritoItem =
                 _context.FavoritoItems.SingleOrDefault(
-                    s => s.Imovel.Id == imovel.Id && s.FavoritoId == FavoritoId);
+                    s => s.Imovel.ImovelId == imovel.ImovelId && s.FavoritoId == FavoritoId);
             var quantidadeLocal = 0;
             if(favoritoItem != null)
             {
