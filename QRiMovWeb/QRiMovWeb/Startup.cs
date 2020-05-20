@@ -4,10 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using QRiMovWeb.Context;
+using QRiMovWeb.Models;
 using QRiMovWeb.Repoositories;
 
 namespace QRiMovWeb
@@ -29,7 +31,9 @@ namespace QRiMovWeb
 
             services.AddTransient<ICategoriaRepository, CategoriaRepository>();
             services.AddTransient<IImovelRepository, ImovelRepository>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
+            services.AddScoped(f => Favorito.GetFavorito(f));
             services.AddMvc();
         }
 
@@ -47,6 +51,7 @@ namespace QRiMovWeb
             }
 
             app.UseStaticFiles();
+            app.UseSession();
 
             app.UseMvc(routes =>
             {
