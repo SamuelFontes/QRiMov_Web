@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using QRiMovWeb.Context;
+using QRiMovWeb.Repoositories;
 
 namespace QRiMovWeb
 {
@@ -25,6 +26,9 @@ namespace QRiMovWeb
         {
             services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddTransient<ICategoriaRepository, CategoriaRepository>();
+            services.AddTransient<IImovelRepository, ImovelRepository>();
 
             services.AddMvc();
         }
