@@ -38,7 +38,7 @@ namespace QRiMovWeb
             services.AddTransient<ICategoriaRepository, CategoriaRepository>();
             services.AddTransient<IImovelRepository, ImovelRepository>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
+            
             services.AddScoped(f => Favorito.GetFavorito(f));
             services.AddMvc();
             services.AddMemoryCache();

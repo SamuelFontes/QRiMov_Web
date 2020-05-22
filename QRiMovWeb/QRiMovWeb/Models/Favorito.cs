@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using QRiMovWeb.Context;
@@ -24,8 +25,13 @@ namespace QRiMovWeb.Models
             ISession session = 
                 services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
             var context = services.GetService<AppDbContext>();
-            string favoritoId = session.GetString("FavoritoId") ?? Guid.NewGuid().ToString();
-            session.SetString("FavoritoId", favoritoId);
+            //string favoritoId = session.GetString("FavoritoId") ?? Guid.NewGuid().ToString();
+
+            string favoritoId = UsuarioAtual.user;
+            if (favoritoId == null)
+                favoritoId = "NAO ACHOU";
+
+            //session.SetString("FavoritoId", favoritoId);
             return new Favorito(context)
             {
                 FavoritoId = favoritoId

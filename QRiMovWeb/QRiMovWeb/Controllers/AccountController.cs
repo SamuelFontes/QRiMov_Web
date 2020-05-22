@@ -6,6 +6,7 @@ using QRiMovWeb.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using QRiMovWeb.Models;
 
 namespace QRiMovWeb.Controllers
 {
@@ -43,6 +44,7 @@ namespace QRiMovWeb.Controllers
                 var result = await _signInManager.PasswordSignInAsync(user, loginVM.Password, false, false);
                 if (result.Succeeded)
                 {
+                    UsuarioAtual.user = loginVM.UserName;
                     if (string.IsNullOrEmpty(loginVM.ReturnUrl))
                     {
                         return RedirectToAction("Index", "Home");
