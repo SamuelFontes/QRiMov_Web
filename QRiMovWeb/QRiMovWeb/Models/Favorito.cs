@@ -6,6 +6,7 @@ using QRiMovWeb.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace QRiMovWeb.Models
@@ -24,12 +25,9 @@ namespace QRiMovWeb.Models
         {
             ISession session = 
                 services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
+            var favoritoId = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
             var context = services.GetService<AppDbContext>();
             //string favoritoId = session.GetString("FavoritoId") ?? Guid.NewGuid().ToString();
-
-            string favoritoId = UsuarioAtual.user;
-            if (favoritoId == null)
-                favoritoId = "NAO ACHOU";
 
             //session.SetString("FavoritoId", favoritoId);
             return new Favorito(context)
