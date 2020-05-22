@@ -149,6 +149,7 @@ namespace QRiMovWeb.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            _context.Database.ExecuteSqlCommand("Delete from favoritoItems where imovelID = " + id.ToString());
             var imovel = await _context.Imoveis.SingleOrDefaultAsync(m => m.ImovelId == id);
             _context.Imoveis.Remove(imovel);
             await _context.SaveChangesAsync();

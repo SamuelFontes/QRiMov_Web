@@ -9,11 +9,10 @@ namespace QRiMov.Controllers
     public class Conexao
     {
         private static readonly string conexao = @"Data Source=ccstecno.ddns.net;Initial Catalog=QRiMov;Persist Security Info=True;User ID=qrimov;Password=123@biscoito";
-        private static SqlConnection conn = null;
 
         public static SqlConnection abrirConexao()
         {
-            conn = new SqlConnection(conexao);
+            SqlConnection conn = new SqlConnection(conexao);
             try
             {
                 conn.Open();
@@ -24,13 +23,6 @@ namespace QRiMov.Controllers
                 Console.Write(ex);
             }
             return conn;
-        }
-        public static void fechaConexao()
-        {
-            if (conn != null)
-            {
-                conn.Close();
-            }
         }
     }
 }

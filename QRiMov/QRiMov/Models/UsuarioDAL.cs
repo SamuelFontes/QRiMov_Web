@@ -118,7 +118,6 @@ namespace QRiMov.Models
             }
             finally
             {
-                Conexao.fechaConexao();
             }
             return var;
         }
@@ -167,7 +166,6 @@ namespace QRiMov.Models
             }
             finally
             {
-                Conexao.fechaConexao();
             }
             return var;
         }
@@ -193,7 +191,6 @@ namespace QRiMov.Models
             }
             finally
             {
-                Conexao.fechaConexao();
             }
             return var;
         }
@@ -224,7 +221,6 @@ namespace QRiMov.Models
             }
             finally
             {
-                Conexao.fechaConexao();
             }
             return lista;
         }
