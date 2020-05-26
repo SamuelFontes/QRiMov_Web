@@ -26,6 +26,8 @@ namespace QRiMovWeb.Models
         public string ImgMiniaturaUrl { get; set; }
         [StringLength(255)]
         public string ImgUrl { get; set; }
+        [StringLength(255)]
+        public string ImgQRCode { get; set; }
         public bool IsAtivo { get; set; }
         public bool IsDestaque { get; set; }
         public int CategoriaId { get; set; }

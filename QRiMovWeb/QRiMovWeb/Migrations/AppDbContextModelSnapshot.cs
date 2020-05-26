@@ -239,6 +239,9 @@ namespace QRiMovWeb.Migrations
                     b.Property<string>("ImgMiniaturaUrl")
                         .HasMaxLength(255);
 
+                    b.Property<string>("ImgQRCode")
+                        .HasMaxLength(255);
+
                     b.Property<string>("ImgUrl")
                         .HasMaxLength(255);
 
