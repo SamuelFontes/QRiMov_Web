@@ -66,6 +66,8 @@ namespace QRiMovWeb.Areas.Admin.Controllers
             {
                 _context.Add(imovel);
                 await _context.SaveChangesAsync();
+                string ImgQRCode = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=qrimov_" + imovel.ImovelId.ToString();
+                _context.Database.ExecuteSqlCommand("UPDATE IMOVEIS SET ImgQRCode = '" + ImgQRCode + "' where imovelID = " + imovel.ImovelId.ToString());
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CategoriaId"] = new SelectList(_context.Categorias, "CategoriaId", "CategoriaId", imovel.CategoriaId);

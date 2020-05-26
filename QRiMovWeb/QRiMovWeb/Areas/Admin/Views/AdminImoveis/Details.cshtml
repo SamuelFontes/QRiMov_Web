@@ -76,7 +76,13 @@
         <dd>
             @Html.DisplayFor(model => model.ImgUrl)
         </dd>
-        
+        <dt>
+            @Html.DisplayNameFor(model => model.ImgQRCode)
+        </dt>
+        <dd>
+            <img src="@Html.DisplayFor(model => model.ImgQRCode)"/>
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.IsDestaque)
         </dt>
