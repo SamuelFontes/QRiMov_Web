@@ -12,7 +12,14 @@
                 <!--Title-->
                 <h2 class="card-title">@Model.Descricao</h2>
                 <!--Text-->
-                <p class="card-text"><h3>@Model.Comarca, @Model.Bairro</h3></p>
+                <p class="card-text">
+                    <h3><b>CEP: </b>@Model.CEP</h3>
+                    <h3><b>UF: </b>@Model.UF</h3>
+                    <h3><b>Cidade: </b>@Model.Comarca</h3>
+                    <h3><b>Endereço: </b>@Model.Logradouro, @Model.Numero</h3>
+                    <h3><b>Valor: </b>@Model.Valor</h3>
+                    <h3><b>Categoria: </b>@Model.Categoria.CategoriaNome</h3>
+                </p>
                 <p class="btn btn-group pull-right">
                     <a asp-controller="Imovel" asp-action="List" class="btn btn-default">Ver todos os imóveis</a>
                     <a class="btn btn-primary" id="cartButton" asp-controller="Favorito" asp-action="AdicionarItemNosFavoritos" asp-route-imovelId="@Model.ImovelId">
