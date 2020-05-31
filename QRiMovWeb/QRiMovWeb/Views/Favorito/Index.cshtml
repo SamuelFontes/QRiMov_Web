@@ -5,6 +5,7 @@
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
+                <th></th>
                 <th>Imóvel</th>
                 <th></th>
             </tr>
@@ -13,7 +14,8 @@
             @foreach (var item in Model.Favorito.FavoritoItems)
             {
             <tr>
-                <td class="text-left"><a asp-controller="Imovel" asp-action="Details" asp-route-ImovelId="@item.Imovel.ImovelId">@item.Imovel.Descricao</a></td>
+                <td class="text-center"><a asp-controller="Imovel" asp-action="Details" asp-route-ImovelId="@item.Imovel.ImovelId"><img src="@item.Imovel.ImgMiniaturaUrl" style="width:64px;height: auto;" /></a></td>
+                <td class="text-center"><a asp-controller="Imovel" asp-action="Details" asp-route-ImovelId="@item.Imovel.ImovelId">@item.Imovel.Descricao</a></td>
                 <td class="text-center"><a class="glyphicon glyphicon-remove text-danger remove" asp-controller="Favorito" asp-action="RemoverItemDosFavoritos" asp-route-imovelId="@item.Imovel.ImovelId"></a></td>
             </tr>
             }
