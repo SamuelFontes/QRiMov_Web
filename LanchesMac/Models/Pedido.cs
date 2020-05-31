@@ -62,12 +62,12 @@ namespace LanchesMac.Models
 
         //[BindNever]
         //[ScaffoldColumn(false)]
-        [Display(Name = "Data/Hora de Recebimento do Pedido")]
+        [Display(Name = "Data da emissão da documentação")]
         [DataType(DataType.DateTime)]
         [DisplayFormat(DataFormatString = "{0: dd/MM/yyyy hh:mm}", ApplyFormatInEditMode = true)]
         public DateTime PedidoEnviado { get; set; }
 
-        [Display(Name ="Data/Hora da Entrega do Pedido")]
+        [Display(Name ="Data da entrega da documentação")]
         [DataType(DataType.DateTime)]
         [DisplayFormat(DataFormatString = "{0: dd/MM/yyyy hh:mm}", ApplyFormatInEditMode = true)]
         public DateTime? PedidoEntregueEm { get; set; }
