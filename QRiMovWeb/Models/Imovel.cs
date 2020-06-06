@@ -6,6 +6,8 @@ namespace QRiMovWeb.Models
     {
         public int ImovelId { get; set; }
         [StringLength(255)]
+        public string Detalhes { get; set; }
+        [StringLength(255)]
         public string Descricao { get; set; }
         public decimal Valor { get; set; }
         [StringLength(20)]

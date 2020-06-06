@@ -12,43 +12,46 @@
 <table class="table">
     <thead>
         <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Descricao)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Valor)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CEP)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Logradouro)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Numero)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Complemento)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Bairro)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.UF)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Comarca)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ImgMiniaturaUrl)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ImgUrl)
-                </th>
-                
-                <th>
-                    @Html.DisplayNameFor(model => model.IsDestaque)
-                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Detalhes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Valor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CEP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Logradouro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Numero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Complemento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bairro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UF)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comarca)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImgMiniaturaUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImgUrl)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.IsDestaque)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Categoria)
             </th>
@@ -60,6 +63,9 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Detalhes)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Valor)
@@ -91,7 +97,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ImgUrl)
             </td>
-           
+
             <td>
                 @Html.DisplayFor(modelItem => item.IsDestaque)
             </td>

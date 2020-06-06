@@ -17,6 +17,12 @@
             @Html.DisplayFor(model => model.Descricao)
         </dd>
         <dt>
+            @Html.DisplayNameFor(model => model.Detalhes)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Detalhes)
+        </dd>
+        <dt>
             @Html.DisplayNameFor(model => model.Valor)
         </dt>
         <dd>
@@ -80,9 +86,8 @@
             @Html.DisplayNameFor(model => model.ImgQRCode)
         </dt>
         <dd>
-            <img src="@Html.DisplayFor(model => model.ImgQRCode)"/>
+            <img src="@Html.DisplayFor(model => model.ImgQRCode)" />
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.IsDestaque)
         </dt>
