@@ -1,0 +1,20 @@
+﻿@model Imovel
+<div class="col-sm-4 col-lg-4 col-md-4 ">
+    <div class="thumbnail" style="height:350px;overflow:hidden;" >
+        <img src="@Model.ImgUrl" class="img-rounded" alt="@Model.Descricao" style="height:145px;width:225px;overflow:hidden;" width="225" height="225" />
+        <div class="caption">
+            <h3 class="pull-right">Valor : @Model.Valor.ToString("c")</h3>
+            <h3>
+                <a asp-controller="Imovel" asp-action="Details" asp-route-ImovelId="@Model.ImovelId">@Model.Descricao</a>
+            </h3>
+            <p>Valor : @Model.Valor.ToString("c")</p>
+        </div>
+        <div class="addToCart text-right">
+            <p class="button ">
+                <a class="btn btn-warning" id="cartButton" asp-controller="Favorito" asp-action="AdicionarItemNosFavoritos" asp-route-imovelId="@Model.ImovelId">
+                    <span class="glyphicon glyphicon-star"></span> Favoritar
+                </a>
+            </p>
+        </div>
+    </div>
+</div>
