@@ -4,6 +4,8 @@ O repositório em questão é a parte Web do projeto QRiMov, o qual consiste no 
 
 # Participantes
 Gabriel Antonio Leite da Silva
+
 Luigi Tricoli
+
 Samuel Hilario Dias Fontes
 
