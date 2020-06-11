@@ -21,6 +21,7 @@ namespace QRiMovWeb
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("pt-BR", false);
         }
 
         public IConfiguration Configuration { get; }
