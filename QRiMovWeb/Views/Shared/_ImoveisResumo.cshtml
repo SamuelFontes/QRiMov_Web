@@ -3,11 +3,12 @@
     <div class="thumbnail" style="height:350px;overflow:hidden;" >
         <img src="@Model.ImgUrl" class="img-rounded" alt="@Model.Descricao" style="height:145px;width:225px;overflow:hidden;" width="225" height="225" />
         <div class="caption">
-            <h3 class="pull-right">Valor : @Model.Valor.ToString("c")</h3>
+            <h3 class="pull-right badge badge-pill badge-primary">@Model.Categoria.CategoriaNome</h3>
             <h3>
                 <a asp-controller="Imovel" asp-action="Details" asp-route-ImovelId="@Model.ImovelId">@Model.Descricao</a>
-            </h3>
-            <p>Valor : @Model.Valor.ToString("c")</p>
+            </h3> 
+            <h3>@Model.Valor.ToString("c")</h3>
+            <h4>@Model.UF, @Model.Comarca</h4>
         </div>
         <div class="addToCart text-right">
             <p class="button ">

@@ -1,14 +1,14 @@
 ﻿@model Imovel
 <div class="container marginTop">
     <div class="row">
-        <div class="card">
+        <div class="card" >
             <div class="text-center view overlay hm-white-slight">
-                <img src="@Model.ImgUrl" class="img-fluid" alt=""/>
+                <img src="@Model.ImgUrl" class="img-responsive img-rounded" alt="" style="margin-left: auto;margin-right:auto;"/>
                 <a href="#">
                     <div class="mask waves-effect waves-light"></div>
                 </a>
             </div>
-            <div class="card-block">
+            <div class="card-block text-center" >
                 <!--Title-->
                 <h2 class="card-title">@Model.Descricao</h2>
                 <!--Text-->
@@ -18,13 +18,13 @@
                     <h3><b>UF: </b>@Model.UF</h3>
                     <h3><b>Comarca: </b>@Model.Comarca</h3>
                     <h3><b>Endereço: </b>@Model.Logradouro, @Model.Numero</h3>
-                    <h3><b>Valor: </b>@Model.Valor</h3>
+                    <h3><b>Valor: </b>@Model.Valor.ToString("c")</h3>
                     <h3><b>Categoria: </b>@Model.Categoria.CategoriaNome</h3>
                 </p>
-                <p class="btn btn-group pull-right">
+                <p class="btn btn-group text-center">
                     <a asp-controller="Imovel" asp-action="List" class="btn btn-default">Ver todos os imóveis</a>
                     <a class="btn btn-primary" id="cartButton" asp-controller="Favorito" asp-action="AdicionarItemNosFavoritos" asp-route-imovelId="@Model.ImovelId">
-                        Adicionar @Model.Descricao aos Favoritos
+                        Adicionar aos Favoritos
                     </a>
                 </p>
             </div>
