@@ -108,6 +108,8 @@ namespace QRiMovWeb.Areas.Admin.Controllers
                 {
                     _context.Update(imovel);
                     await _context.SaveChangesAsync();
+                    string ImgQRCode = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=samuguel-001-site1.gtempurl.com/Imovel/Details?ImovelId=" + imovel.ImovelId.ToString();
+                    _context.Database.ExecuteSqlCommand("UPDATE IMOVEIS SET ImgQRCode = '" + ImgQRCode + "' where imovelID = " + imovel.ImovelId.ToString());
                 }
                 catch (DbUpdateConcurrencyException)
                 {
